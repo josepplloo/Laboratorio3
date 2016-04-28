@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Editar Auto"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.EditAutoLabel_fechaIngreso}" for="fechaIngreso" />
+
+                    <p:calendar value="#{autoController.selected.fechaIngreso}" id="fechaIngreso" showOn="button" title="#{bundle.EditAutoTitle_fechaIngreso}" required="true" requiredMessage="#{bundle.EditAutoRequiredMessage_fechaIngreso}"> 
+                        <f:convertDateTime pattern="dd/MM/yy"/> 
+                    </p:calendar>
+
+                    
+                    <h:outputLabel value="#{bundle.EditAutoLabel_potencia}" for="potencia" />
+                    <h:inputText id="potencia" value="#{autoController.selected.potencia}" title="#{bundle.EditAutoTitle_potencia}" required="true" requiredMessage="#{bundle.EditAutoRequiredMessage_potencia}"/>
+                    <h:outputLabel value="#{bundle.EditAutoLabel_cilindraje}" for="cilindraje" />
+                    <h:inputText id="cilindraje" value="#{autoController.selected.cilindraje}" title="#{bundle.EditAutoTitle_cilindraje}" required="true" requiredMessage="#{bundle.EditAutoRequiredMessage_cilindraje}"/>
+                    <h:outputLabel value="#{bundle.EditAutoLabel_venta}" for="venta" />
+                    <h:selectOneMenu id="venta" value="#{autoController.selected.venta}" title="#{bundle.EditAutoTitle_venta}" >
+                        <f:selectItems value="#{ventaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAutoLabel_modelo}" for="modelo" />
+                    <h:inputText id="modelo" value="#{autoController.selected.modelo}" title="#{bundle.EditAutoTitle_modelo}" />
+                    <h:outputLabel value="#{bundle.EditAutoLabel_transmision}" for="transmision" />
+                    <h:inputTextarea rows="4" cols="30" id="transmision" value="#{autoController.selected.transmision}" title="#{bundle.EditAutoTitle_transmision}" required="true" requiredMessage="#{bundle.EditAutoRequiredMessage_transmision}"/>
+                    <h:outputLabel value="#{bundle.EditAutoLabel_matricula}" for="matricula" />
+                    <h:inputText id="matricula" value="#{autoController.selected.matricula}" title="#{bundle.EditAutoTitle_matricula}" required="true" requiredMessage="#{bundle.EditAutoRequiredMessage_matricula}"/>
+                    <h:outputLabel value="#{bundle.EditAutoLabel_fabricante}" for="fabricante" />
+                    <h:inputText id="fabricante" value="#{autoController.selected.fabricante}" title="#{bundle.EditAutoTitle_fabricante}" required="true" requiredMessage="#{bundle.EditAutoRequiredMessage_fabricante}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{autoController.update}" value="Guardar"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="Ver"/>
+                <br />
+                <h:commandLink action="#{autoController.prepareList}" value="Listar todos los autos" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Inicio" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

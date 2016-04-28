@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="co.modelo" persistenceUnitName="ConcesionarioPU" xs="false" id="_14612078572691" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:schema>Concesionario</jpa:schema>
+    <jpa:entity name="Cliente" xre="false" sm="false" abs="false" class="Cliente" visibile="true" minimized="false" rootElement="_14612078572691" id="_1461207898029">
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="Nombre" id="_14612084015476">
+                <jpa:column name="Nombre" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="Apellido" id="_14612085070377">
+                <jpa:column name="Apellido" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="int" visibile="true" name="Edad" id="_14612085434688">
+                <jpa:column name="Edad" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="Direccion" id="_14612086014519">
+                <jpa:column name="Direccion" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="Telefono" id="_146120862603610">
+                <jpa:column name="Telefono" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <one-to-many mapped-by="cliente" collection-type="java.util.List" connected-entity-id="_1461213395970" connected-attribute-id="_146125673551418" target-entity="Venta" visibile="true" name="venta" id="_146125673551619">
+                <join-table/>
+            </one-to-many>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_14612081812985">
+                <jpa:column name="id" unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity name="Venta" xre="false" sm="false" abs="false" class="Venta" visibile="true" minimized="false" rootElement="_14612078572691" id="_1461213395970">
+        <jpa:attributes>
+            <many-to-one optional="true" primaryKey="true" connected-entity-id="_1461207898029" connected-attribute-id="_146125673551619" target-entity="Cliente" visibile="true" name="cliente" id="_146125673551418">
+                <join-table/>
+            </many-to-one>
+            <one-to-one optional="true" primaryKey="true" connected-entity-id="_1461213640099" connected-attribute-id="_146126901480231" target-entity="Auto" visibile="true" name="auto" id="_146126901480030">
+                <join-table/>
+            </one-to-one>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_14612134293426">
+                <jpa:column name="id" unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity name="Auto" xre="false" sm="false" abs="false" class="Auto" visibile="true" minimized="false" rootElement="_14612078572691" id="_1461213640099">
+        <jpa:attributes>
+            <basic attribute-type="int" visibile="true" name="Modelo" id="_146121370002610">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="fabricante" id="_146121378020111">
+                <jpa:column name="fabricante" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="fechaIngreso" id="_146121380336212">
+                <jpa:column name="fechaIngreso" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="int" visibile="true" name="cilindraje" id="_146121390863013">
+                <jpa:column name="cilindraje" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="int" visibile="true" name="potencia" id="_146121393277014">
+                <jpa:column name="potencia" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="transmision" id="_146121393501115">
+                <jpa:column name="transmision" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:lob/>
+            </basic>
+            <one-to-one mapped-by="auto" optional="true" primaryKey="false" connected-entity-id="_1461213395970" connected-attribute-id="_146126901480030" target-entity="Venta" visibile="true" name="venta" id="_146126901480231"/>
+            <jpa:id attribute-type="String" visibile="true" name="matricula" id="_14612136657119">
+                <jpa:column name="matricula" unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Collection</ct>
+    </jpa:c>
+    <jpa:diagram id="_14612078572692">
+        <plane elementRef="_14612078572691" id="_14612078572693_p">
+            <shape elementRef="_1461207898029" id="_1461207898029_gui">
+                <Bounds x="514.0" y="185.0" width="140.0" height="201.0"/>
+            </shape>
+            <shape elementRef="_1461213395970" id="_1461213395970_gui">
+                <Bounds x="318.0" y="68.0" width="131.0" height="108.0"/>
+            </shape>
+            <shape elementRef="_1461213640099" id="_1461213640099_gui">
+                <Bounds x="102.0" y="185.0" width="128.0" height="221.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
